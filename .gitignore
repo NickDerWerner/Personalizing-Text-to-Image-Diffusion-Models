@@ -1,0 +1,6 @@
+*.ckpt
+*.safetensors
+output_dirs/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
