@@ -43,7 +43,7 @@ def generate_class_images(args):
     for i in tqdm(range(start_idx, args.num_images)):
         image = pipe(args.prompt).images[0]
         
-        filename = f"{args.output_dir}/{i:04d}.png"
+        filename = f"{args.output_dir}/{args.starting_id + i:04d}.png"
         image.save(filename)
 
     print("Generation complete.")
@@ -54,6 +54,6 @@ if __name__ == "__main__":
     parser.add_argument("--prompt", type=str, default="a cat", help="Class prompt (e.g., 'a dog', 'a person')")
     parser.add_argument("--num_images", type=int, default=200, help="Number of images to generate")
     parser.add_argument("--output_dir", type=str, default="dataset/class_images", help="Output directory for images")
-    
+    parser.add_argument("--starting_id", type=int, default=0, help="Starting ID for image filenames")
     args = parser.parse_args()
     generate_class_images(args)
