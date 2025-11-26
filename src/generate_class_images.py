@@ -31,16 +31,10 @@ def generate_class_images(args):
 
     print(f"Generating {args.num_images} images for class prompt: '{args.prompt}'")
     
-    # Check how many images already exist to avoid overwriting or re-generating if resumed
-    existing_images = [f for f in os.listdir(args.output_dir) if f.endswith(".png") or f.endswith(".jpg")]
-    start_idx = len(existing_images)
-    
-    if start_idx >= args.num_images:
-        print(f"Found {start_idx} images already. Skipping generation.")
-        return
-
     # Generate images
-    for i in tqdm(range(start_idx, args.num_images)):
+    print(f"Generating {args.num_images} images starting from ID {args.starting_id}...")
+    
+    for i in tqdm(range(args.num_images)):
         image = pipe(args.prompt).images[0]
         e = args.starting_id + i
         filename = f"{args.output_dir}/{e:04d}.png"
