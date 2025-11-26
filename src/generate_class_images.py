@@ -42,8 +42,8 @@ def generate_class_images(args):
     # Generate images
     for i in tqdm(range(start_idx, args.num_images)):
         image = pipe(args.prompt).images[0]
-        
-        filename = f"{args.output_dir}/{args.starting_id + i:04d}.png"
+        e = args.starting_id + i
+        filename = f"{args.output_dir}/{e:04d}.png"
         image.save(filename)
 
     print("Generation complete.")
