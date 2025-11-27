@@ -46,7 +46,7 @@ def generate_class_images(args):
         images = pipe(prompts,
                      negative_prompt=negative_prompts,
                      num_inference_steps=50,
-                     guidance_scale=6.0,
+                     guidance_scale=8.0,
                      generator=torch.manual_seed(42 + args.starting_id + i)).images # Seed changed to vary per batch based on starting_id
         
         # Save images
